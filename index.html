@@ -15,15 +15,36 @@ const WHATSAPP = '5537999940405';
 
 // Cardápio. preco em reais (ex.: 3.5). preco: null aparece como "a definir".
 // Para tirar um item, apague a linha. Para esgotar, ponha esgotado: true.
+// Sabores abaixo são sugestão (13/10/2026), a Nicoli confirma quais faz.
 const CARDAPIO = [
-  { secao: 'Trufas', desenho: 'trufa', itens: [
-    { nome: 'Trufa', desc: 'sabor a definir', preco: null },
+  { secao: 'Trufas', desenho: 'trufa', nota: 'Casquinha de chocolate com recheio cremoso', itens: [
+    { nome: 'Trufa de brigadeiro', desc: 'chocolate ao leite com recheio de brigadeiro', preco: null },
+    { nome: 'Trufa de ninho', desc: 'recheio de leite ninho', preco: null },
+    { nome: 'Trufa de maracujá', desc: 'recheio de mousse de maracujá', preco: null },
+    { nome: 'Trufa de morango', desc: 'recheio cremoso de morango', preco: null },
+    { nome: 'Trufa de limão', desc: 'recheio de mousse de limão', preco: null },
+    { nome: 'Trufa de coco', desc: 'recheio de beijinho', preco: null },
+    { nome: 'Trufa de amendoim', desc: 'recheio de paçoca', preco: null },
   ]},
-  { secao: 'Cones', desenho: 'cone', itens: [
-    { nome: 'Cone trufado', desc: 'sabor a definir', preco: null },
+  { secao: 'Cones', desenho: 'cone', nota: 'Casquinha de chocolate recheada até a ponta', itens: [
+    { nome: 'Cone de ninho com Nutella', desc: 'creme de ninho e Nutella', preco: null },
+    { nome: 'Cone de brigadeiro', desc: 'brigadeiro cremoso com granulado', preco: null },
+    { nome: 'Cone de ninho com morango', desc: 'creme de ninho e pedaços de morango', preco: null },
+    { nome: 'Cone de maracujá', desc: 'mousse de maracujá', preco: null },
+    { nome: 'Cone de prestígio', desc: 'chocolate com coco', preco: null },
   ]},
-  { secao: 'Brigadeiros', desenho: 'brigadeiro', itens: [
-    { nome: 'Brigadeiro', desc: 'sabor a definir', preco: null },
+  { secao: 'Brigadeiros', desenho: 'brigadeiro', nota: 'Brigadeiro gourmet, de colher ou enrolado', itens: [
+    { nome: 'Tradicional', desc: 'chocolate com granulado', preco: null },
+    { nome: 'Ninho', desc: 'leite ninho', preco: null },
+    { nome: 'Beijinho', desc: 'coco com cravo', preco: null },
+    { nome: 'Churros', desc: 'doce de leite com canela', preco: null },
+    { nome: 'Paçoca', desc: 'amendoim', preco: null },
+    { nome: 'Ninho com Nutella', desc: 'leite ninho recheado de Nutella', preco: null },
+  ]},
+  { secao: 'Caixinhas', desenho: 'brigadeiro', nota: 'Sabores sortidos. Se quiser escolher, escreve na observação', itens: [
+    { nome: 'Caixinha com 4', desc: 'brigadeiros ou trufas sortidos', preco: null },
+    { nome: 'Caixinha com 6', desc: 'brigadeiros ou trufas sortidos', preco: null },
+    { nome: 'Caixinha com 12', desc: 'brigadeiros ou trufas sortidos', preco: null },
   ]},
 ];
 // =============================================
@@ -52,6 +73,7 @@ section{padding:26px 0 4px}
 section h2{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:30px}
 section h2 .mini{width:44px;height:44px;flex:none;border-radius:50%;border:1.5px solid var(--dourado);display:grid;place-items:center;background:var(--card)}
 section h2 .mini svg{width:76%;height:76%}
+.nota{margin:-6px 0 14px;color:var(--suave);font-size:14px}
 .item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--linha);border-radius:16px;padding:14px;margin-bottom:10px}
 .item .info{flex:1;min-width:0}
 .item .nome{font-weight:800;font-size:16px}
@@ -163,6 +185,7 @@ document.getElementById('abas').innerHTML = CARDAPIO.map(s => `<a href="#${slug(
 document.getElementById('cardapio').innerHTML = CARDAPIO.map((s, i) => `
   <section id="${slug(s.secao)}">
     <h2 class="serif"><span class="mini">${desenho(s.desenho, '#4A1621', '#4A1621', '#F0CFCB')}</span>${s.secao}</h2>
+    ${s.nota ? `<p class="nota">${s.nota}</p>` : ''}
     ${s.itens.map((it, j) => {
       const id = i + '-' + j;
       const preco = it.preco == null ? '<div class="preco indef">preço a definir</div>' : `<div class="preco">${real(it.preco)}</div>`;
