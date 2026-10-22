@@ -1,6 +1,6 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Encomendas para festa em Arcos/MG · brigadeiros e mini donuts · Doce Mania</title><meta name="description" content="Brigadeiros tradicionais e personalizados em caixas de 50 ou 100 e mini donuts no tema da festa. Encomenda com 7 dias, em Arcos/MG.">
+<title>Encomendas para festa em Arcos/MG · brigadeiros e mini donuts · Doce Mania</title><meta name="description" content="Brigadeiros tradicionais e personalizados em caixas de 50 ou 100 e mini donuts no tema da festa, em Arcos/MG. Monte a encomenda e ela chega pronta no WhatsApp.">
 <meta name="theme-color" content="#4A1621"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="canonical" href="https://docemaniaarcos.com.br/encomendas.html">
 <meta property="og:type" content="website"><meta property="og:url" content="https://docemaniaarcos.com.br/encomendas.html"><meta property="og:title" content="Encomendas · Doce Mania">
 <meta property="og:description" content="Brigadeiros e mini donuts no tema da sua festa, em Arcos/MG."><meta property="og:image" content="https://docemaniaarcos.com.br/og.jpg">
@@ -159,13 +159,13 @@ footer small{font-size:11px;opacity:.7}footer small a{color:inherit}
 <div class="in"><div class="oi">pra sua festa,</div><h1>BRIGADEIROS<br>E DONUTS<br><em>NO SEU TEMA.</em></h1>
 <div class="sub">Aniversário, chá revelação, mesversário, formatura · Arcos/MG</div>
 <div class="acoes"><a class="bt claro" href="#escolha">Montar minha encomenda<span class="ar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></div></div></section>
-<section class="info" aria-label="Informações"><div><b>7 dias</b>de antecedência</div><div><b>metade</b>de sinal nos brigadeiros</div><div><b>R$ 6,00</b>entrega em Arcos</div></section></aside>
-<div class="topo-dir"><h2 class="tit">como funciona</h2><div class="passos"><div class="passo"><span>1</span><div><b>Escolhe o que quer</b><small>Brigadeiros, mini donuts no tema ou os dois.</small></div></div><div class="passo"><span>2</span><div><b>Marca a data da festa</b><small>Com pelo menos 7 dias de antecedência.</small></div></div><div class="passo"><span>3</span><div><b>Manda pelo WhatsApp</b><small>O pedido chega pronto e a gente confirma e combina os detalhes por lá.</small></div></div></div></div></div>
+<section class="info" aria-label="Informações"><div><b>7 dias</b>pra personalizado</div><div><b>metade</b>de sinal nos brigadeiros</div><div><b>R$ 6,00</b>entrega em Arcos</div></section></aside>
+<div class="topo-dir"><h2 class="tit">como funciona</h2><div class="passos"><div class="passo"><span>1</span><div><b>Escolhe o que quer</b><small>Brigadeiros, mini donuts no tema ou os dois.</small></div></div><div class="passo"><span>2</span><div><b>Marca a data da festa</b><small>Personalizado e encomenda grande com 7 dias. Tradicional até 100 unidades, a gente vê a disponibilidade.</small></div></div><div class="passo"><span>3</span><div><b>Manda pelo WhatsApp</b><small>O pedido chega pronto e a gente confirma e combina os detalhes por lá.</small></div></div></div></div></div>
 <h2 class="tit" id="escolha">monte sua encomenda</h2>
 <div class="colunas"><div id="menu"></div>
 <section class="form" id="pedido"><h3>Sua encomenda</h3><div class="lista" id="lista"></div>
 <label for="nome">Seu nome</label><input type="text" id="nome" autocomplete="name" placeholder="Como te chamamos?">
-<label for="data">Pra quando é?</label><input type="date" id="data">
+<label for="data">Pra quando é?</label><input type="date" id="data"><p class="aviso" id="prazo" style="margin-top:6px"></p>
 <div id="campoTema"><label for="tema">Tema ou ocasião</label><input type="text" id="tema" placeholder="Ex.: aniversário de 1 ano, tema fazendinha"></div>
 <div class="lb">Como você quer receber?</div>
 <div class="opcoes"><label><input type="radio" name="entrega" value="Entrega" id="rEntrega"> Entrega (+ R$ 6,00)</label><label><input type="radio" name="entrega" value="Retirada"> Retirada</label></div>
@@ -186,31 +186,38 @@ const WHATSAPP = "5537999940405";
 const TAXA_ENTREGA = 6;
 const GA_ID = "G-VYVF9LTLHR";
 const ANTECEDENCIA = 7;
+const LIMITE_TRADICIONAL = 100;
 const ENCOMENDAS = [
  {
   "secao": "Brigadeiros",
   "id": "brigadeiros",
-  "nota": "Caixas com 50 ou 100 unidades. Pedido com 7 dias de antecedência e metade do valor de sinal.",
+  "nota": "Caixas com 50 ou 100 unidades, metade do valor de sinal. Tradicional até 100 unidades: a gente vê a disponibilidade, geralmente dá pra menos de 7 dias. Personalizado ou tradicional acima de 100 unidades: 7 dias de antecedência.",
   "itens": [
    {
     "nome": "50 brigadeiros tradicionais",
     "desc": "brigadeiro, ninho, ninho com Nutella, beijinho, confete, Ferrero Rocher e morango",
-    "preco": 75
+    "preco": 75,
+    "un": 50
    },
    {
     "nome": "100 brigadeiros tradicionais",
     "desc": "os mesmos sabores, você escolhe na observação",
-    "preco": 150
+    "preco": 150,
+    "un": 100
    },
    {
     "nome": "50 brigadeiros personalizados",
     "desc": "com carimbo, colorido ou modelado, no tema da festa",
-    "preco": 100
+    "preco": 100,
+    "un": 50,
+    "pers": true
    },
    {
     "nome": "100 brigadeiros personalizados",
     "desc": "com carimbo, colorido ou modelado, no tema da festa",
-    "preco": 200
+    "preco": 200,
+    "un": 100,
+    "pers": true
    }
   ]
  },
@@ -224,7 +231,8 @@ const ENCOMENDAS = [
     "desc": "cores e decoração no tema que você escolher",
     "preco": null,
     "minimo": 15,
-    "cor": "#F28DB2"
+    "cor": "#F28DB2",
+    "pers": true
    }
   ]
  }
@@ -300,8 +308,10 @@ $('menu').innerHTML = ENCOMENDAS.map(s => `
 const hoje = new Date(), min = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate() + ANTECEDENCIA);
 const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 const br = s => s.split('-').reverse().join('/');
-$('data').min = iso(min);
 const escolhidos = () => enc.filter(it => it.qtd);
+// 7 dias só para personalizado ou tradicional grande; o resto a Nicoli confirma a disponibilidade no WhatsApp
+const tradicionais = () => escolhidos().filter(it => it.un && !it.pers).reduce((a, it) => a + it.un * it.qtd, 0);
+const precisaPrazo = () => escolhidos().some(it => it.pers) || tradicionais() > LIMITE_TRADICIONAL;
 function atualizar() {
   enc.forEach(it => { $('q' + it.id).textContent = it.qtd; });
   const sel = escolhidos(), orc = sel.some(it => !it.preco);
@@ -310,7 +320,11 @@ function atualizar() {
   $('qtdTotal').textContent = sel.length ? sel.length + (sel.length === 1 ? ' item' : ' itens') + (orc ? ' + orçamento' : '') : '0 itens';
   $('valorTotal').textContent = real(total);
   $('barra').classList.toggle('on', sel.length > 0);
-  $('campoTema').style.display = sel.some(it => /personalizad/.test(it.nome)) ? '' : 'none';
+  $('campoTema').style.display = sel.some(it => it.pers) ? '' : 'none';
+  $('data').min = precisaPrazo() ? iso(min) : iso(hoje);
+  $('prazo').textContent = !sel.length ? '' : precisaPrazo()
+    ? `Personalizado e encomenda grande precisam de ${ANTECEDENCIA} dias: a partir de ${br(iso(min))}.`
+    : 'Brigadeiro tradicional até 100 unidades: a gente confirma a disponibilidade no WhatsApp. Geralmente dá pra menos de 7 dias.';
   $('lista').innerHTML = sel.length ? sel.map(it => `<div class="li"><div><b>${linha(it)}</b></div><span>${valor(it)}</span>
     <button type="button" data-zerar="${it.id}" aria-label="Remover ${it.nome}">remover</button></div>`).join('')
     : '<p class="vazio">Nada ainda. Usa o + nos produtos.</p>';
@@ -333,7 +347,8 @@ $('enviar').addEventListener('click', () => {
   const sel = escolhidos();
   if (!nome) return erro('nome', 'Falta o seu nome.');
   if (!data) return erro('data', 'Fala pra quando é a encomenda.');
-  if (data < iso(min)) return erro('data', `Encomenda precisa de ${ANTECEDENCIA} dias: escolhe a partir de ${br(iso(min))}.`);
+  if (precisaPrazo() && data < iso(min)) return erro('data', `Personalizado e encomenda grande precisam de ${ANTECEDENCIA} dias: escolhe a partir de ${br(iso(min))}.`);
+  if (data < iso(hoje)) return erro('data', 'Essa data já passou.');
   if ($('campoTema').style.display !== 'none' && !tema) return erro('tema', 'Conta o tema ou a ocasião da festa.');
   if (!entrega()) return erro('rEntrega', 'Escolhe se é entrega ou retirada.');
   if (entrega() === 'Entrega' && !end) return erro('endereco', 'Falta o endereço da entrega.');
@@ -342,12 +357,12 @@ $('enviar').addEventListener('click', () => {
   sel.forEach(it => { total += (it.preco || 0) * it.qtd; m.push(`${linha(it)} · ${valor(it)}`); });
   m.push('');
   if (entrega() === 'Entrega') { m.push('Entrega: ' + real(TAXA_ENTREGA)); total += TAXA_ENTREGA; }
-  m.push('Total: ' + real(total) + (sel.some(it => !it.preco) ? ' + o valor dos donuts' : ''), '', 'Nome: ' + nome, 'Para o dia: ' + br(data));
+  m.push('Total: ' + real(total) + (sel.some(it => !it.preco) ? ' + o valor dos donuts' : ''), '', 'Nome: ' + nome, 'Para o dia: ' + br(data) + (precisaPrazo() ? '' : ' (consegue nessa data?)'));
   if (tema) m.push('Tema: ' + tema);
   m.push(entrega() === 'Entrega' ? 'Entregar em: ' + end : 'Vou retirar');
   const obs = $('obs').value.trim();
   if (obs) m.push('Obs.: ' + obs);
-  conta('generate_lead', { currency: 'BRL', value: total, entrega: entrega(), itens: sel.reduce((a, it) => a + it.qtd, 0), tipo: 'encomenda' });
+  conta('generate_lead', { currency: 'BRL', value: total, entrega: entrega(), itens: sel.reduce((a, it) => a + it.qtd, 0), tipo: 'encomenda', prazo: precisaPrazo() ? '7 dias' : 'disponibilidade' });
   window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(m.join('\n')), '_blank', 'noopener');
 });
 atualizar();
