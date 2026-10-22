@@ -143,8 +143,8 @@ footer small{font-size:11px;opacity:.7}
 <section class="form" id="pedido"><h3>Seu pedido</h3><div class="lista" id="lista"></div>
 <label for="nome">Seu nome</label><input type="text" id="nome" autocomplete="name" placeholder="Como te chamamos?">
 <div class="lb">Como você quer receber?</div>
-<div class="opcoes"><label><input type="radio" name="entrega" value="Entrega" checked> Entrega (+ R$ 6,00)</label><label><input type="radio" name="entrega" value="Retirada"> Retirada</label></div>
-<div id="campoEndereco"><label for="endereco">Endereço</label><input type="text" id="endereco" autocomplete="street-address" placeholder="Rua, número e bairro"></div>
+<div class="opcoes"><label><input type="radio" name="entrega" value="Entrega" id="rEntrega"> Entrega (+ R$ 6,00)</label><label><input type="radio" name="entrega" value="Retirada"> Retirada</label></div>
+<div id="campoEndereco" style="display:none"><label for="endereco">Endereço</label><input type="text" id="endereco" autocomplete="street-address" placeholder="Rua, número e bairro"></div>
 <div id="campoData"><label for="data">Pra quando é a encomenda?</label><input type="date" id="data"></div>
 <label for="obs">Observação</label><textarea id="obs" rows="3" placeholder="Horário, sabor dos brigadeiros, tema da festa, algum recado..."></textarea>
 <p class="erro" id="erro" role="alert"></p>
@@ -310,7 +310,8 @@ function detalhe(l) {
   Object.entries(l.extras).forEach(([c, n]) => p.push(`+ ${n > 1 ? n + 'x ' : ''}${c}`));
   return p.join(', ');
 }
-const entrega = () => document.querySelector('input[name=entrega]:checked').value;
+// nada vem marcado: a taxa só entra quando o cliente escolhe Entrega (Luciano, 22/10)
+const entrega = () => (document.querySelector('input[name=entrega]:checked') || {}).value || '';
 function atualizar() {
   const n = carrinho.reduce((a, l) => a + l.qtd, 0);
   let total = carrinho.reduce((a, l) => a + precoUn(l) * l.qtd, 0);
@@ -341,6 +342,7 @@ $('enviar').addEventListener('click', () => {
   $('erro').classList.remove('on');
   const nome = $('nome').value.trim(), end = $('endereco').value.trim(), data = $('data').value;
   if (!nome) return erro('nome', 'Falta o seu nome.');
+  if (!entrega()) return erro('rEntrega', 'Escolhe se é entrega ou retirada.');
   if (entrega() === 'Entrega' && !end) return erro('endereco', 'Falta o endereço da entrega.');
   if (carrinho.some(l => achar(l.id).sec.encomenda) && !data) return erro('data', 'Brigadeiro é por encomenda: fala pra quando é.');
   const m = ['Oi! Quero fazer um pedido na Doce Mania:', ''];
