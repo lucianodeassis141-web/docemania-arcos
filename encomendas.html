@@ -75,7 +75,7 @@ body.travado{overflow:hidden}
 .obrig{background:var(--vinho);color:var(--creme)}.opc{background:#fff;color:var(--vinho)}
 .linha{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(74,22,33,.1);font-size:15px;font-weight:600;cursor:pointer}
 .linha small{font-weight:500;opacity:.7}.linha small.mais{display:block;color:var(--framb);opacity:1;font-weight:700;font-size:12.5px}
-.linha input[type=radio]{width:22px;height:22px;accent-color:var(--framb);flex:none}
+.linha input[type=radio],.linha input[type=checkbox]{width:22px;height:22px;accent-color:var(--framb);flex:none}
 .qtd.peq button{width:32px;height:32px;font-size:17px}
 .jerro{display:none;color:#B3261E;font-size:13px;font-weight:700;padding:8px 20px 0}.jerro.on{display:block}
 .jpe{display:flex;gap:12px;align-items:center;padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid rgba(74,22,33,.12);background:var(--creme)}
@@ -207,7 +207,7 @@ footer small{font-size:11px;opacity:.7}footer small a{color:inherit}
 <div class="in"><div class="oi">pra sua festa,</div><h1>BRIGADEIROS<br>E DONUTS<br><em>NO SEU TEMA.</em></h1>
 <div class="sub">Aniversário, chá revelação, mesversário, formatura · Arcos/MG</div>
 <div class="acoes"><a class="bt claro" href="#escolha">Montar minha encomenda<span class="ar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></div></div></section>
-<section class="info" aria-label="Informações"><div><b>7 dias</b>pra personalizado</div><div><b>metade</b>de sinal nos brigadeiros</div><div><b>R$ 6,00</b>entrega em Arcos</div></section></aside>
+<section class="info" aria-label="Informações"><div><b>7 dias</b>pra personalizado</div><div><b>metade</b>de sinal nos brigadeiros</div><div><b>R$ 7,00</b>entrega em Arcos</div></section></aside>
 <div class="topo-dir"><h2 class="tit">como funciona</h2><div class="passos"><div class="passo"><span>1</span><div><b>Escolhe o que quer</b><small>Brigadeiros, mini donuts no tema ou os dois.</small></div></div><div class="passo"><span>2</span><div><b>Marca a data da festa</b><small>Personalizado e encomenda grande com 7 dias. Tradicional até 100 unidades, a gente vê a disponibilidade.</small></div></div><div class="passo"><span>3</span><div><b>Manda pelo WhatsApp</b><small>O pedido chega pronto e a gente confirma e combina os detalhes por lá.</small></div></div></div></div></div>
 <h2 class="tit" id="escolha">monte sua encomenda</h2>
 <div class="colunas"><div id="menu"></div>
@@ -216,7 +216,7 @@ footer small{font-size:11px;opacity:.7}footer small a{color:inherit}
 <label for="data">Pra quando é?</label><input type="date" id="data"><p class="aviso" id="prazo" style="margin-top:6px"></p>
 <div id="campoTema"><label for="tema">Tema ou ocasião</label><input type="text" id="tema" placeholder="Ex.: aniversário de 1 ano, tema fazendinha"></div>
 <div class="lb">Como você quer receber?</div>
-<div class="opcoes"><label><input type="radio" name="entrega" value="Entrega" id="rEntrega"> Entrega (+ R$ 6,00)</label><label><input type="radio" name="entrega" value="Retirada"> Retirada</label></div>
+<div class="opcoes"><label><input type="radio" name="entrega" value="Entrega" id="rEntrega"> Entrega (+ R$ 7,00)</label><label><input type="radio" name="entrega" value="Retirada"> Retirada</label></div>
 <div id="campoEndereco" style="display:none"><label for="endereco">Endereço</label><input type="text" id="endereco" autocomplete="street-address" placeholder="Rua, número e bairro"></div>
 <label for="obs">Observação</label><textarea id="obs" rows="3" placeholder="Sabores dos brigadeiros, cores, horário da festa..."></textarea>
 <p class="erro" id="erro" role="alert"></p>
@@ -231,7 +231,7 @@ footer small{font-size:11px;opacity:.7}footer small a{color:inherit}
 <script>
 // ============ O QUE A NICOLI MUDA (ou muda no site/gerar.py e gera de novo) ============
 const WHATSAPP = "5537999132836";
-const TAXA_ENTREGA = 6;
+const TAXA_ENTREGA = 7;
 const GA_ID = "G-VYVF9LTLHR";
 const ANTECEDENCIA = 7;
 const LIMITE_TRADICIONAL = 100;
