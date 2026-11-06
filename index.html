@@ -171,7 +171,7 @@ footer small{font-size:12px;color:var(--tinta)}footer small a{color:inherit;text
 .lin .item{gap:16px;padding:20px 0;cursor:pointer;border-bottom:1px solid rgba(74,22,33,.1)}.lin .item:last-child{border-bottom:0}
 .lin .item .nm{font-size:16px;text-wrap:balance}.lin .item .ds{font-size:13px;margin-top:6px}.lin .item .pr{margin-top:10px;font-size:15px}
 .lin .ft{position:relative;flex:none;width:96px;height:96px;border-radius:18px;background:var(--rose2);display:flex;align-items:center;justify-content:center}
-.lin .ft .bola{width:74px;height:74px}
+.lin .ft .bola{width:74px;height:74px}.bola.comfoto{object-fit:cover;border-radius:14px}.lin .ft .bola.comfoto{width:100%;height:100%;border-radius:18px}
 .lin .ft .mais{position:absolute;right:-6px;bottom:-6px;width:32px;height:32px;border-radius:50%;background:var(--vinho);color:var(--creme);font:800 20px/32px Manrope,sans-serif;text-align:center;box-shadow:0 4px 10px rgba(74,22,33,.25)}
 .duvida{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9;display:flex;align-items:center;min-height:44px;gap:8px;white-space:nowrap;background:var(--creme);color:var(--vinho);text-decoration:none;font-weight:800;font-size:13.5px;padding:11px 18px;border-radius:999px;box-shadow:0 6px 20px rgba(74,22,33,.2)}
 .duvida svg{width:18px;height:18px;color:var(--verde)}.duvida.off{display:none}
@@ -318,6 +318,18 @@ const CARDAPIO = [
     "cor": "#B06A34"
    }
   ]
+ },
+ {
+  "secao": "Cookies",
+  "id": "cookies",
+  "itens": [
+   {
+    "nome": "Cookie americano de Nutella",
+    "desc": "recheado de Nutella, com gotas de chocolate por cima",
+    "preco": 16.0,
+    "foto": "img/cookie-240.webp"
+   }
+  ]
  }
 ];
 // =======================================================================================
@@ -358,6 +370,7 @@ document.addEventListener('click', e => {
     conta(lk.href.includes('wa.me') ? 'clique_whatsapp' : 'clique_instagram', { local: lk.getAttribute('aria-label') || lk.textContent.trim() });
 });
 function bola(it) {
+  if (it.foto) return `<img class="bola comfoto" src="${it.foto}" width="240" height="240" alt="${it.nome}" loading="lazy">`;
   const cor = it.cor;
   // brigadeiro na forminha rosa, no mesmo jeito do donut: sem contorno, com sombra, brilho e granulado (22/10)
   if (!cor) return '<svg class="bola" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="91" rx="26" ry="3.2" fill="#4A1621" opacity=".12"/><ellipse cx="50" cy="64.5" rx="32" ry="6.5" fill="#D9618E"/><circle cx="50" cy="46" r="29" fill="#3A1A0E"/><circle cx="50" cy="43" r="28" fill="#5C2E1B"/><path d="M31 29 C35 22 42 18.5 49 18" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="3.2" fill="none" stroke-linecap="round"/><rect x="54.5" y="20.1" width="6" height="2.2" rx="1.1" fill="#F28DB2" transform="rotate(167 57.5 21.2)"/><rect x="48.8" y="33.0" width="6" height="2.2" rx="1.1" fill="#F6C945" transform="rotate(33 51.8 34.1)"/><rect x="24.9" y="39.2" width="6" height="2.2" rx="1.1" fill="#7CCFB0" transform="rotate(144 27.9 40.3)"/><rect x="43.2" y="53.3" width="6" height="2.2" rx="1.1" fill="#FBF4F0" transform="rotate(133 46.2 54.4)"/><rect x="53.4" y="58.6" width="6" height="2.2" rx="1.1" fill="#F4A3A8" transform="rotate(148 56.4 59.7)"/><rect x="64.9" y="29.6" width="6" height="2.2" rx="1.1" fill="#9FC7EA" transform="rotate(139 67.9 30.7)"/><rect x="56.0" y="35.7" width="6" height="2.2" rx="1.1" fill="#F28DB2" transform="rotate(109 59.0 36.8)"/><rect x="37.7" y="42.7" width="6" height="2.2" rx="1.1" fill="#F6C945" transform="rotate(59 40.7 43.8)"/><rect x="61.7" y="47.7" width="6" height="2.2" rx="1.1" fill="#7CCFB0" transform="rotate(58 64.7 48.8)"/><rect x="24.0" y="46.3" width="6" height="2.2" rx="1.1" fill="#FBF4F0" transform="rotate(65 27.0 47.4)"/><rect x="64.0" y="58.5" width="6" height="2.2" rx="1.1" fill="#F4A3A8" transform="rotate(141 67.0 59.6)"/><rect x="45.7" y="46.1" width="6" height="2.2" rx="1.1" fill="#9FC7EA" transform="rotate(14 48.7 47.2)"/><rect x="35.9" y="35.2" width="6" height="2.2" rx="1.1" fill="#F28DB2" transform="rotate(36 38.9 36.3)"/><rect x="69.7" y="47.3" width="6" height="2.2" rx="1.1" fill="#F6C945" transform="rotate(136 72.7 48.4)"/><rect x="30.4" y="50.9" width="6" height="2.2" rx="1.1" fill="#7CCFB0" transform="rotate(45 33.4 52.0)"/><rect x="69.8" y="36.6" width="6" height="2.2" rx="1.1" fill="#FBF4F0" transform="rotate(12 72.8 37.7)"/><rect x="44.0" y="25.0" width="6" height="2.2" rx="1.1" fill="#F4A3A8" transform="rotate(6 47.0 26.1)"/><rect x="33.0" y="58.8" width="6" height="2.2" rx="1.1" fill="#9FC7EA" transform="rotate(99 36.0 59.9)"/><rect x="28.7" y="32.8" width="6" height="2.2" rx="1.1" fill="#F28DB2" transform="rotate(59 31.7 33.9)"/><rect x="53.3" y="46.8" width="6" height="2.2" rx="1.1" fill="#F6C945" transform="rotate(176 56.3 47.9)"/><rect x="58.5" y="25.9" width="6" height="2.2" rx="1.1" fill="#7CCFB0" transform="rotate(159 61.5 27.0)"/><rect x="63.0" y="39.3" width="6" height="2.2" rx="1.1" fill="#FBF4F0" transform="rotate(178 66.0 40.4)"/><rect x="46.3" y="18.0" width="6" height="2.2" rx="1.1" fill="#F4A3A8" transform="rotate(48 49.3 19.1)"/><rect x="43.5" y="38.6" width="6" height="2.2" rx="1.1" fill="#9FC7EA" transform="rotate(15 46.5 39.7)"/><path d="M18 64 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 L73 87 Q50 90.5 27 87 Z" fill="#F28DB2"/><path d="M26.00 64 L32.72 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M34.00 64 L38.48 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M42.00 64 L44.24 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M50.00 64 L50.00 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M58.00 64 L55.76 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M66.00 64 L61.52 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M74.00 64 L67.28 87" stroke="#DD6A96" stroke-width="1.6" stroke-linecap="round"/><path d="M18 64 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0 q4 -3.6 8 0" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="1.4" fill="none" stroke-linejoin="round"/></svg>';
@@ -449,7 +462,7 @@ function abrir(id) {
       <div class="qtd peq"><button type="button" data-ex="${k}" data-d="-1" aria-label="Tirar ${nomeComp(c)}">−</button><output id="ex${k}">0</output><button type="button" class="mais" data-ex="${k}" data-d="1" aria-label="Pôr ${nomeComp(c)}">+</button></div></div>`).join('')}</details>
     ${rechs.length ? `<div class="grupo"><div><b>Quer recheio?</b><small>vai dentro do donut</small></div><span class="opc">opcional</span></div>
     ${rechs.map(r => `<label class="linha"><span>${r}<small class="mais">+ ${real(RECHEIOS[r])}</small></span><input type="checkbox" name="rech" value="${r}"></label>`).join('')}` : ''}`
-    : `<p class="nota">${it.sec.nota}</p>`;
+    : (it.sec.nota ? `<p class="nota">${it.sec.nota}</p>` : '');
   $('jErro').classList.remove('on');
   rodape();
   $('janela').classList.add('on'); document.body.classList.add('travado'); $('jFechar').focus();
