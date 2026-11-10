@@ -273,49 +273,56 @@ const CARDAPIO = [
  {
   "secao": "Mini donuts",
   "id": "donuts",
-  "nota": "Todo donut já vem com 1 complemento à sua escolha. Quer mais? Cada complemento a mais é R$ 1,00 (Kinder Bueno R$ 1,50).",
+  "nota": "Todo donut já vem com 1 complemento à sua escolha. Quer mais? Cada complemento a mais é R$ 1,00. Kinder Bueno por cima é adicional, R$ 1,50.",
   "itens": [
    {
     "nome": "Simples, chocolate preto",
     "desc": "sem recheio, cobertura de chocolate preto",
     "preco": 3.0,
-    "cor": "#6B3A2A"
+    "cor": "#6B3A2A",
+    "foto": "img/donut-preto-240.webp"
    },
    {
     "nome": "Simples, chocolate branco",
     "desc": "sem recheio, cobertura de chocolate branco",
     "preco": 3.0,
-    "cor": "#FFF6EC"
+    "cor": "#FFF6EC",
+    "foto": "img/donut-oreo-240.webp"
    },
    {
     "nome": "Recheado de brigadeiro",
     "desc": "recheio de brigadeiro",
     "preco": 4.0,
-    "cor": "#4E2617"
+    "cor": "#4E2617",
+    "foto": "img/donut-oreo-240.webp"
    },
    {
     "nome": "Recheado de Ninho",
     "desc": "recheio de Ninho",
     "preco": 4.0,
-    "cor": "#F3E3C3"
+    "cor": "#F3E3C3",
+    "foto": "img/donut-rosa-240.webp"
    },
    {
     "nome": "Especial de Ninho com Nutella",
     "desc": "recheio de Ninho com Nutella",
     "preco": 4.5,
-    "cor": "#C98F6B"
+    "cor": "#C98F6B",
+    "foto": "img/donut-rosa-240.webp"
    },
    {
     "nome": "Especial de Nutella",
     "desc": "recheio de Nutella",
     "preco": 4.5,
-    "cor": "#8E2B3D"
+    "cor": "#8E2B3D",
+    "foto": "img/donut-oreo-240.webp"
    },
    {
     "nome": "Especial de Kinder Bueno",
     "desc": "recheio de Kinder Bueno",
     "preco": 4.5,
-    "cor": "#B06A34"
+    "cor": "#B06A34",
+    "foto": "img/donut-preto-240.webp"
    }
   ]
  },
@@ -456,7 +463,7 @@ function abrir(id) {
   $('jTopo').innerHTML = `${bola(it)}<div><h3>${it.nome}</h3><p>${it.desc}</p><b>${real(it.preco)}</b>${it.sec.id === 'donuts' ? '<span class="esc" id="jEsc">escolha 1 complemento</span>' : ''}</div>`;
   $('jCorpo').innerHTML = it.sec.id === 'donuts' ? `
     <div class="grupo"><div><b id="gInc">Escolha 1 complemento</b><small>já vem incluso</small></div><span class="obrig">obrigatório</span></div>
-    <div class="cgrade" role="radiogroup" aria-labelledby="gInc">${COMPLEMENTOS.map(c => `<label class="chip"><input type="radio" name="inc" value="${nomeComp(c)}"><span>${nomeComp(c)}${c.includes('*') ? '<small>quando tiver</small>' : ''}</span></label>`).join('')}</div>
+    <div class="cgrade" role="radiogroup" aria-labelledby="gInc">${COMPLEMENTOS.filter(c => !EXTRA_ESPECIAL[nomeComp(c)]).map(c => `<label class="chip"><input type="radio" name="inc" value="${nomeComp(c)}"><span>${nomeComp(c)}${c.includes('*') ? '<small>quando tiver</small>' : ''}</span></label>`).join('')}</div>
     <details class="maisc"><summary><span><b>Quer mais complementos?</b><small>a partir de ${real(PRECO_EXTRA)} cada, em cada donut</small></span><span class="opc">opcional</span></summary>
     ${COMPLEMENTOS.map((c, k) => `<div class="linha"><span>${rotComp(c)}<small class="mais">+ ${real(precoExtra(nomeComp(c)))}</small></span>
       <div class="qtd peq"><button type="button" data-ex="${k}" data-d="-1" aria-label="Tirar ${nomeComp(c)}">−</button><output id="ex${k}">0</output><button type="button" class="mais" data-ex="${k}" data-d="1" aria-label="Pôr ${nomeComp(c)}">+</button></div></div>`).join('')}</details>
